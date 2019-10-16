@@ -1,14 +1,21 @@
 package de.hhn.se.gs2.mitarbeitern.model;
 
+/**
+ * 
+ * @author tbirghisan
+ * 
+ * */
+
 public abstract class Mitarbeiter {
 
-	private String vorname;
-	private String nachname;
-	private float jahresGehaltBisHeute;
+	protected String vorname;
+	protected String nachname;
+	protected float jahresGehaltBisHeute;
 	
 	public Mitarbeiter(String vorname, String nachname) {
 		this.vorname = vorname;
 		this.nachname = nachname;
+		jahresGehaltBisHeute = 0;
 	}
 	
 	public abstract float entgeltBerechnen();

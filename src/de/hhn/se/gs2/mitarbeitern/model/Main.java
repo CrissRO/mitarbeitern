@@ -1,22 +1,25 @@
 package de.hhn.se.gs2.mitarbeitern.model;
 
+/**
+ * 
+ * @author cmocanu
+ * 
+ * */
+
 public class Main {
 
 	public static void main(String args[]) {
-		
-//		//Mitarbeiter a = new Angestellter("Rudolf", "Smith", 3256.2f);
-//		Mitarbeiter at = new ATAngestellter("Michael", "Straus", 2500);
-//		Mitarbeiter z = new Zeitarbeiter("Klaus", "Bauer");
-//		
-		Angestellter rudolf = new Angestellter("Rudolf", "Smith", 3256.2f);
-		ATAngestellter michael = new ATAngestellter("Michael", "Straus", 2500);
-		Zeitarbeiter klaus = new Zeitarbeiter("Klaus", "Bauer",4.7f);
+				
+		Angestellter cezar = new Angestellter("Cezar", "Mocanu", 3256.2f);
+		ATAngestellter teo = new ATAngestellter("Teodor", "Birghisan", 2500);
+		Zeitarbeiter fabian = new Zeitarbeiter("Fabian", "Bertea",4.7f);
 	
 		
-		rudolf.setGearbeiteteUeberstunden(23);
-		klaus.setGearbeiteStunden(123);
-		System.out.println(rudolf.getVorname()+" "+rudolf.getNachname()+" bekommt "+rudolf.entgeltBerechnen()+" moantlich und "+rudolf.entgeltBerechnen()*12+" jaehrlich");
-		System.out.println(michael.getVorname()+" "+michael.getNachname()+" bekommt "+michael.entgeltBerechnen()+" moantlich und "+michael.entgeltBerechnen()*12+" jaehrlich");
-		System.out.println(klaus.getVorname()+" "+klaus.getNachname()+" bekommt "+klaus.entgeltBerechnen()+" moantlich und "+klaus.entgeltBerechnen()*12+" jaehrlich");
+		cezar.setGearbeiteteUeberstunden(23);
+		fabian.setGearbeiteStunden(123);
+		
+		System.out.println(cezar.getVorname()+" "+cezar.getNachname()+" bekommt "+cezar.entgeltBerechnen()+" monatlich und "+cezar.entgeltBerechnen() * 12+" jaehrlich");
+		System.out.println(teo.getVorname()+" "+teo.getNachname()+" bekommt "+teo.entgeltBerechnen()+" monatlich und "+teo.entgeltBerechnen()*12+" jaehrlich");
+		System.out.println(fabian.getVorname()+" "+fabian.getNachname()+" bekommt "+fabian.entgeltBerechnen()+" monatlich und "+fabian.entgeltBerechnen()*12+" jaehrlich");
 	}
 }

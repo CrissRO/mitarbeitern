@@ -1,8 +1,15 @@
 package de.hhn.se.gs2.mitarbeitern.model;
 
+/**
+ * 
+ * @author cmocanu
+ * 
+ * 
+ */
+
 public class Zeitarbeiter extends Mitarbeiter {
 
-	private float stundenLohn = 4.7f;
+	private float stundenLohn;
 	private int gearbeiteteStunden;
 	
 	public Zeitarbeiter(String vorname, String nachname, float stundenLohn) {

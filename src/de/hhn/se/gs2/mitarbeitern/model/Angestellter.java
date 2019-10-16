@@ -1,5 +1,10 @@
 package de.hhn.se.gs2.mitarbeitern.model;
 
+/**
+ * 
+ * @author fbertea
+ * 
+ * */
 public class Angestellter extends Mitarbeiter {
 
 	private float monatsLohn;
