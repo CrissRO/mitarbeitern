@@ -2,7 +2,7 @@ package de.hhn.se.gs2.mitarbeitern.model;
 
 /**
  * 
- * @author cmocanu
+ * @author fbertea
  * */
 public interface ISteuerZahler {
 
