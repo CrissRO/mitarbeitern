@@ -1,5 +1,4 @@
 package de.hhn.se.gs2.mitarbeitern.model;
-
 /**
  * 
  * @author cmocanu
@@ -8,18 +7,31 @@ package de.hhn.se.gs2.mitarbeitern.model;
 
 public class Main {
 
+	private static Angestellter cezar;
+	private static ATAngestellter teo;
+	private static Zeitarbeiter fabian;
+	
 	public static void main(String args[]) {
-				
-		Angestellter cezar = new Angestellter("Cezar", "Mocanu", 3256.2f);
-		ATAngestellter teo = new ATAngestellter("Teodor", "Birghisan", 2500);
-		Zeitarbeiter fabian = new Zeitarbeiter("Fabian", "Bertea",4.7f);
+		
+		try {
+			cezar = new Angestellter("Cezar", "Mocanu", 326.2f,IMitarbeiter.Vertragsart.BEFRIESTETER);
+			fabian = new Zeitarbeiter("Fabian", "Bertea",9.7f,IMitarbeiter.Vertragsart.TEILZEIT);
+			teo = new ATAngestellter("Teodor", "Birghisan", 2500,IMitarbeiter.Vertragsart.UNBEFRIESTETER);
+			
+			cezar.setGearbeiteteUeberstunden(23);
+			fabian.setGearbeiteStunden(123);
+			
+			cezar.setJahresgehaltBisHeute(cezar.getJahresgehaltBisHeute() + cezar.entgeltBerechnen());
+			fabian.setJahresgehaltBisHeute(fabian.getJahresgehaltBisHeute() + fabian.entgeltBerechnen());
+			teo.setJahresgehaltBisHeute(teo.getJahresgehaltBisHeute() + teo.entgeltBerechnen());
+			
+			System.out.println(cezar + " tatsaechliche Steuer " + cezar.tatsaechlicheEinkommentSteuer() + " voraussichtliche Steuer " + cezar.voraussichtlicheEinkommentSteuer());
+			System.out.println(teo + " tatsaechliche Steuer " + teo.tatsaechlicheEinkommentSteuer() + " voraussichtliche Steuer " + teo.voraussichtlicheEinkommentSteuer());
+			System.out.println(fabian + " tatsaechliche Steuer " + fabian.tatsaechlicheEinkommentSteuer() + " voraussichtliche Steuer " + fabian.voraussichtlicheEinkommentSteuer());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	
 		
-		cezar.setGearbeiteteUeberstunden(23);
-		fabian.setGearbeiteStunden(123);
-		
-		System.out.println(cezar.getVorname()+" "+cezar.getNachname()+" bekommt "+cezar.entgeltBerechnen()+" monatlich und "+cezar.entgeltBerechnen() * 12+" jaehrlich");
-		System.out.println(teo.getVorname()+" "+teo.getNachname()+" bekommt "+teo.entgeltBerechnen()+" monatlich und "+teo.entgeltBerechnen()*12+" jaehrlich");
-		System.out.println(fabian.getVorname()+" "+fabian.getNachname()+" bekommt "+fabian.entgeltBerechnen()+" monatlich und "+fabian.entgeltBerechnen()*12+" jaehrlich");
 	}
 }

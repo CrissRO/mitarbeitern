@@ -5,20 +5,43 @@ package de.hhn.se.gs2.mitarbeitern.model;
  * @author fbertea
  * 
  * */
-public class Angestellter extends Mitarbeiter {
+public class Angestellter implements IMitarbeiter,ISteuerZahler {
 
 	private float monatsLohn;
 	private final float ueberStundenTarif = 5.7f;
 	private int gearbeiteteUeberstunden;
 	
-	public Angestellter(String vorname, String nachname, float monatsLohn) {
-		super(vorname, nachname);
+	private String vorname,nachname;
+	private float jahresgehaltBisHeute;
+	private Vertragsart vertragsArt;
+	
+	public Angestellter(String vorname, String nachname, float monatsLohn, Vertragsart vertragsArt) throws Exception{
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.jahresgehaltBisHeute = 0;
+		this.vertragsArt = vertragsArt;
+		
+		if(monatsLohn / 4 * 40 < IMitarbeiter.mindestLohn) 
+			throw new Exception("Stundenlohn weniger als mindest Lohn!");
 		this.monatsLohn = monatsLohn;
 	}
 	
 	@Override
 	public float entgeltBerechnen() {
 		return (gearbeiteteUeberstunden*ueberStundenTarif)+monatsLohn;	
+	}
+
+	@Override
+	public float tatsaechlicheEinkommentSteuer() {
+		if(monatsLohn < ISteuerZahler.grundFreiBetrag)
+			return 0;
+		return 0.16f * (monatsLohn - ISteuerZahler.grundFreiBetrag);
+	}
+
+	@Override
+	public float voraussichtlicheEinkommentSteuer() {
+		return tatsaechlicheEinkommentSteuer() * 12;
+		
 	}
 	
 	public int getGearbeiteteUeberstunden() {
@@ -36,4 +59,35 @@ public class Angestellter extends Mitarbeiter {
 	public float getUeberStundenTarif() {
 		return ueberStundenTarif;
 	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
+	public String getNachname() {
+		return nachname;
+	}
+
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
+	}
+
+	public float getJahresgehaltBisHeute() {
+		return jahresgehaltBisHeute;
+	}
+
+	public void setJahresgehaltBisHeute(float jahresgehaltBisHeute) {
+		this.jahresgehaltBisHeute = jahresgehaltBisHeute;
+	}
+
+	@Override
+	public String toString() {
+		return "Angestellter [monatsLohn=" + monatsLohn + ", vorname=" + vorname + ", nachname="
+				+ nachname + ", jahresgehaltBisHeute=" + jahresgehaltBisHeute + ", vertragsArt=" + vertragsArt + "]";
+	}
+	
 }
